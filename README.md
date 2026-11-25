@@ -29,3 +29,8 @@ The loop-scaling curve in the web deck is conceptual, not measured data. Exact e
 Paper: https://arxiv.org/abs/2610.40325 · PDF: https://arxiv.org/pdf/2610.40325
 
 See docs/RESEARCH_NOTES.md, docs/BUILD_PLAN.md, and docs/EXPORT.md.
+
+
+## Presentation content
+
+The current English slide script and storyboard are maintained in [`content/SLIDE_CONTENT.md`](content/SLIDE_CONTENT.md). It follows the narrative structure of the supplied video transcript while grounding every scientific claim in the primary paper. The script includes speaker notes, timing, visual direction, equation cues, figure mapping, and research-integrity constraints.
