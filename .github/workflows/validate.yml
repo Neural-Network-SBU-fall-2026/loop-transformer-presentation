@@ -1,19 +1,35 @@
-name: Validate presentation
+name: Validate and package presentation
 on:
   push:
     branches: [main]
   pull_request:
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
+  actions: read
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Extract original paper figures from arXiv source
+        if: github.event_name != 'pull_request'
+        run: bash .github/scripts/import-paper-figures.sh
+      - name: Commit extracted original figure assets
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/assets/paper-original
+          if ! git diff --cached --quiet; then
+            git commit -m "assets: import original figures from arXiv source"
+            git push
+          fi
       - run: npm install
       - run: npm run build
       - run: sudo apt-get update && sudo apt-get install -y libreoffice
