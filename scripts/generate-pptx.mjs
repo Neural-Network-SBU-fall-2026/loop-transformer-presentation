@@ -27,7 +27,7 @@ for(let i=0;i<data.length;i++){
  s.addText(String(i+1).padStart(2,"0")+"  /  15",{x:11.5,y:.22,w:1.2,h:.2,fontSize:8,color:"89867E",align:"right"});
  s.addText(t,{x:.7,y:.85,w:11.8,h:1.0,fontFace:"Aptos Display",fontSize:29,bold:true,color:"242622",fit:"shrink"});
  s.addText(bullets.map(x=>"↗  "+x).join("\n"),{x:.9,y:2.15,w:5.8,h:2.2,fontSize:15,color:"33352F",breakLine:false,paraSpaceAfterPt:14,bullet:{indent:14}});
- if(img){try{await access(img,constants.R_OK);s.addImage({path:img,x:6.75,y:2.0,w:5.85,h:3.6,sizingContain:true});}catch{s.addText(claim,{x:7,y:2.4,w:5.3,h:2.4,fontSize:17,color:"D97736",bold:true,align:"center",valign:"mid",fit:"shrink"});}}
+ if(img){try{await access(img,constants.R_OK);s.addImage({path:img,x:6.75,y:2.0,w:5.85,h:3.6});}catch{s.addText(claim,{x:7,y:2.4,w:5.3,h:2.4,fontSize:17,color:"D97736",bold:true,align:"center",valign:"mid",fit:"shrink"});}}
  else{s.addShape(pptx.ShapeType.roundRect,{x:7.0,y:2.15,w:5.3,h:2.7,rectRadius:.08,line:{color:"E7E2D8",width:1},fill:{color:"FFFFFF"}});s.addText(claim,{x:7.35,y:2.75,w:4.6,h:1.5,fontFace:"Aptos Display",fontSize:19,bold:true,color:"D97736",align:"center",valign:"mid",fit:"shrink"});}
  s.addText("HOW TO LOOP YOUR TRANSFORMER",{x:.7,y:7.05,w:6,h:.18,fontSize:8,color:"99958C",charSpacing:1});
 }
