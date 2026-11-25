@@ -20,6 +20,7 @@ jobs:
       - name: Extract original paper figures from arXiv source
         if: github.event_name != 'pull_request'
         run: bash .github/scripts/import-paper-figures.sh
+        continue-on-error: true
       - name: Commit extracted original figure assets
         if: github.event_name != 'pull_request'
         run: |
