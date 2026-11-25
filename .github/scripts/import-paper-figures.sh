@@ -5,7 +5,8 @@ TMP="$(mktemp -d)"
 OUT="public/assets/paper-original"
 mkdir -p "$OUT"
 trap 'rm -rf "$TMP"' EXIT
-curl --retry 4 --retry-delay 3 -fL "https://export.arxiv.org/e-print/\${PAPER_ID}" -o "$TMP/source"
+# arXiv's current source-download route is /src/<versioned-id>.
+curl --retry 4 --retry-delay 3 -A "LoopTransformerPresentation/1.0 (academic figure extraction)" -fL "https://arxiv.org/src/\${PAPER_ID}" -o "$TMP/source"
 if tar -tf "$TMP/source" >/dev/null 2>&1; then
   mkdir "$TMP/unpacked"
   tar -xf "$TMP/source" -C "$TMP/unpacked"
