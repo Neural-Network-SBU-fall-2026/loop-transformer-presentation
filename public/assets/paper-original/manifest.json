@@ -1,0 +1,1906 @@
+[
+  {
+    "kind": "figure",
+    "number": 1,
+    "page": 2,
+    "file": "public/assets/paper-original/figures/figure-001-page-002.png",
+    "caption": "Figure 1 Looping can improve data and compute efficiency (in over-trained regimes) while retaining downstream quality. We compare Vanilla (no looping), Standard Looping (repeatedly applying the same Transformer sequentially), and our modified versions Parallel Loop Transformer (PLT) (Wu et al., 2025) and Looped Transformers. Left: for 1B models trained across TPP 10–160, all looping methods achieve a given DCLM (Li et al., 2024) bits-per-byte (BPB) value with fewer training tokens than the fitted Vanilla baseline, with the modified PLT variants providing the largest relative data-efficiency gains. Center: across model sizes from 100M to 1B, we compare Vanilla models trained at TPP = 160 with two-loop models trained at TPP = 80. All looping methods achieve a given DCLM BPB with fewer training FLOPs than the fitted Vanilla baseline, and the modified PLT and Looped variants are more efficient than Standard Looping. Right: for 1B models across TPP 10–160, looping retains or improves mean NLL-ranked accuracy across eight reasoning and question-answering tasks; the modified PLT variants match or exceed Standard Looping. See Appendix D for the efficiency calculation and task-level results.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      324.4899597167969
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 2,
+    "page": 5,
+    "file": "public/assets/paper-original/figures/figure-002-page-005.png",
+    "caption": "Figure 2 Looping designs: what is repeated, where, and in what order. Top: the looped component can be the complete transformer block, attention alone, the MLP alone, or attention and the MLP separately. Bottom: full-stack looping traverses the complete transformer for L loops, whereas per-layer looping completes L loops of each block before advancing to the next. Middle-stack and middle-layer looping restrict the corresponding schedule to the central blocks. For a model containing B blocks, the first and last ⌊B/3⌋blocks are run once.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      355.59698486328125
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 3,
+    "page": 6,
+    "file": "public/assets/paper-original/figures/figure-003-page-006.png",
+    "caption": "Figure 3 Full-Stack Looping is favored under fixed parameter-count and training-data budgets, whereas Middle-Stack Looping is favored under FLOP constraints. DCLM validation BPB versus the number of loops or total training FLOPs for 100M and 500M models. Each panel holds the model size and training-data budget constant, so the differences reflect how each strategy uses the additional computation introduced by looping. The advantage of full-stack looping becomes clearer at larger model scales and training budgets. Middle-Stack Looping with fewer loops achieves lower BPB when compute is limited, whereas Full-Stack Looping can attain lower BPB when more compute is available. Increasing the number of loops does not improve quality indefinitely: the 100M results exhibit saturation, regression, and instability when more loops are used. Lower BPB is better; red triangles indicate unstable or clipped runs.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      358.35797119140625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 4,
+    "page": 7,
+    "file": "public/assets/paper-original/figures/figure-004-page-007.png",
+    "caption": "Figure 4 Three ways to vary weights across loops. All designs retain the same base weights. Loop LoRA gives each loop a separate low-rank adapter. Loop Matrix lets each loop learn a combination of these adapters, while Loop Softmax restricts this combination to be nonnegative and sum to one.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      314.09295654296875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 5,
+    "page": 7,
+    "file": "public/assets/paper-original/figures/figure-005-page-007.png",
+    "caption": "Figure 5 Loop-specific corrections become more useful with deeper looping while adding few parameters. DCLM BPB for 300M models with Full-Stack Looping at TPP 100. The left, middle, and right panels plot BPB against loop count, non-embedding parameter count, and total training FLOPs, respectively. The break in the logarithmic parameter axis shows both parameter ranges. FLOPs include the corrections and the training tokens allocated at TPP 100. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      299.09295654296875,
+      590.0,
+      497.157958984375
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 6,
+    "page": 8,
+    "file": "public/assets/paper-original/figures/figure-006-page-008.png",
+    "caption": "Figure 6 PLT shifts the connection between loops across tokens. Loop ℓat token n receives the current-token embedding and the state from loop ℓ−1 at token n −1. KV sharing and G-SWA are omitted for clarity.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      306.7099609375
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 7,
+    "page": 8,
+    "file": "public/assets/paper-original/figures/figure-007-page-008.png",
+    "caption": "Figure 7 Separate normalization recovers much of the quality lost by the shifted transition. DCLM BPB for 200M models at TPP 40 and 80. Each raw panel is followed by its normalized counterpart. Except for Normalized Addition, normalized variants use separate RMS normalization and fixed 50/50 mixing. Red stars mark unstable runs clipped for visualization. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      291.7099609375,
+      590.0,
+      465.6329650878906
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 8,
+    "page": 9,
+    "file": "public/assets/paper-original/figures/figure-008-page-009.png",
+    "caption": "Figure 8 Normalized shifted PLT retains the benefit of looping at 1B. DCLM BPB at TPP 10, 20, 40, and 80. Shifted and unshifted PLT use separate RMS normalization and a rank-8 linear gate. At L = 2, shifted PLT closely tracks the unshifted control and improves upon Full-Stack Looping; at L = 4, a clearer gap to the unshifted control remains. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      262.41094970703125
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 9,
+    "page": 28,
+    "file": "public/assets/paper-original/figures/figure-009-page-028.png",
+    "caption": "Figure 9 Raw scaling curves underlying the relative-efficiency analysis. We plot observed DCLM validation BPB together with unconstrained Vanilla scaling-law fits. Left: BPB as a function of actual training tokens for fixed 1B models across training-token budgets. Middle: BPB as a function of total training FLOPs across model families from 100M to 1B. Vanilla models use TPP = 160, whereas looping models use two loops and TPP = 80. Points show observed runs, connecting lines show empirical trajectories, and dashed black curves show fitted Vanilla scaling laws. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      388.59295654296875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 10,
+    "page": 29,
+    "file": "public/assets/paper-original/figures/figure-010-page-029.png",
+    "caption": "Figure 10 Task-level NLL-ranked accuracy for the 1B models. Results are shown for ARC Easy, ARC Challenge, HellaSwag, PIQA, WinoGrande, OpenBookQA, CommonsenseQA, and Social IQA. For each question, the model predicts the candidate with the lowest token-normalized NLL. Dashed horizontal lines denote random-choice accuracy. Lines connect measured checkpoints and are not fitted scaling laws. Higher is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      377.46795654296875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 11,
+    "page": 30,
+    "file": "public/assets/paper-original/figures/figure-011-page-030.png",
+    "caption": "Figure 11 Candidate-normalized correct-answer NLL for the same eight tasks. Candidate scores are computed from token-normalized NLL and normalized across the available answers. This continuous metric measures how strongly the model prefers the correct answer relative to the alternatives, including changes that do not alter the top-ranked answer. Dashed lines show the random-choice value log C for a task with C candidates. Because choice counts and prompt formats differ, values should be compared within, rather than across, datasets. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      388.4269714355469
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 12,
+    "page": 31,
+    "file": "public/assets/paper-original/figures/figure-012-page-031.png",
+    "caption": "Figure 12 MMLU and MMLU-Pro results for the 1B models. Top: macro-averaged NLL-ranked accuracy, where the predicted answer is the candidate with the lowest token-normalized NLL. Bottom: candidate-normalized correct-answer NLL. Accuracy remains near the respective random-choice baselines, while candidate-normalized correct-answer NLL remains at or above the random-choice reference, particularly on MMLU-Pro. Dashed lines denote random-choice performance. Higher accuracy and lower NLL are better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      636.3049926757812
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 13,
+    "page": 33,
+    "file": "public/assets/paper-original/figures/figure-013-page-033.png",
+    "caption": "Figure 13 DCLM BPB versus loop factor L: 70M and 100M models. Results span TPP 10 to 160 and loop factors L ∈{1, 2, 4, 8, 16, 32}. Each panel fixes model scale and TPP, allowing the effect of increasing the loop factor to be compared across looping designs. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      481.5381164550781
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 14,
+    "page": 34,
+    "file": "public/assets/paper-original/figures/figure-014-page-034.png",
+    "caption": "Figure 14 DCLM BPB versus loop factor L: 200M, 300M, and 500M models. Results span TPP 10 to 100 and loop factors L ∈{1, 2, 4, 8}. Each panel fixes model scale and TPP, allowing the effect of increasing the loop factor to be compared across looping designs. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      348.208984375
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 15,
+    "page": 34,
+    "file": "public/assets/paper-original/figures/figure-015-page-034.png",
+    "caption": "Figure 15 DCLM BPB versus total training FLOPs: 70M and 100M models. Results span TPP 10 to 160 and loop factors L ∈{1, 2, 4, 8, 16, 32}.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      333.208984375,
+      590.0,
+      704.0139770507812
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 16,
+    "page": 35,
+    "file": "public/assets/paper-original/figures/figure-016-page-035.png",
+    "caption": "Figure 16 DCLM BPB versus total training FLOPs: 200M, 300M, and 500M models. Results span TPP 10 to 100 and loop factors L ∈{1, 2, 4, 8}. Middle-Stack Looping often achieves strong gains for a smaller increase in compute, while Full-Stack Looping can attain lower BPB when more training compute is available.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      506.2369689941406
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 17,
+    "page": 37,
+    "file": "public/assets/paper-original/figures/figure-017-page-037.png",
+    "caption": "Figure 17 C4 English BPB versus loop factor L: 70M and 100M models. Results span TPP 10 to 160 and loop factors L ∈{1, 2, 4, 8, 16, 32}. At these smaller scales, several looping designs remain competitive, while the improvement from increasing L generally diminishes at larger loop factors. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      500.4859619140625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 18,
+    "page": 38,
+    "file": "public/assets/paper-original/figures/figure-018-page-038.png",
+    "caption": "Figure 18 C4 English BPB versus loop factor L: 200M, 300M, and 500M models. Results span TPP 10 to 100 and loop factors L ∈{1, 2, 4, 8}. As model scale and TPP increase, Full-Stack Looping more consistently attains lower BPB, while the marginal improvement from increasing L becomes smaller. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      325.9299621582031
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 19,
+    "page": 38,
+    "file": "public/assets/paper-original/figures/figure-019-page-038.png",
+    "caption": "Figure 19 C4 English BPB versus total training FLOPs: 70M and 100M models. Results span TPP 10 to 160 and loop factors L ∈{1, 2, 4, 8, 16, 32}. Middle-Stack Looping often captures much of the quality improvement with a smaller increase in training compute, while spending additional FLOPs through larger loop factors eventually shows diminishing returns. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      310.9299621582031,
+      590.0,
+      722.781982421875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 20,
+    "page": 39,
+    "file": "public/assets/paper-original/figures/figure-020-page-039.png",
+    "caption": "Figure 20 C4 English BPB versus total training FLOPs: 200M, 300M, and 500M models. Results span TPP 10 to 100 and loop factors L ∈{1, 2, 4, 8}. Middle-Stack Looping often provides strong gains for a smaller increase in training compute, while Full-Stack Looping can attain lower BPB when more compute is available, particularly at the larger model scales. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      531.970947265625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 21,
+    "page": 40,
+    "file": "public/assets/paper-original/figures/figure-021-page-040.png",
+    "caption": "Figure 21 WikiText-103 BPB versus loop factor L: 70M and 100M models. Results span TPP 10 to 160 and loop factors L ∈{1, 2, 4, 8, 16, 32}. At these smaller scales, several looping designs remain competitive, while the improvement from increasing L generally diminishes at larger loop factors. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      496.0959777832031
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 22,
+    "page": 41,
+    "file": "public/assets/paper-original/figures/figure-022-page-041.png",
+    "caption": "Figure 22 WikiText-103 BPB versus loop factor L: 200M, 300M, and 500M models. Results span TPP 10 to 100 and loop factors L ∈{1, 2, 4, 8}. As model scale and TPP increase, Full-Stack Looping more consistently attains lower BPB, while the marginal improvement from increasing L becomes smaller. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      309.12396240234375
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 23,
+    "page": 41,
+    "file": "public/assets/paper-original/figures/figure-023-page-041.png",
+    "caption": "Figure 23 WikiText-103 BPB versus total training FLOPs: 70M and 100M models. Results span TPP 10 to 160 and loop factors L ∈{1, 2, 4, 8, 16, 32}. Middle-Stack Looping often captures much of the quality improvement with a smaller increase in training compute, while increasing the loop factor further eventually gives diminishing returns. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      294.12396240234375,
+      590.0,
+      713.5269775390625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 24,
+    "page": 42,
+    "file": "public/assets/paper-original/figures/figure-024-page-042.png",
+    "caption": "Figure 24 WikiText-103 BPB versus total training FLOPs: 200M, 300M, and 500M models. Results span TPP 10 to 100 and loop factors L ∈{1, 2, 4, 8}. Middle-Stack Looping often provides strong gains for a smaller increase in training compute, while Full-Stack Looping can attain lower BPB when more compute is available, particularly at larger model scales. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      531.970947265625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 25,
+    "page": 43,
+    "file": "public/assets/paper-original/figures/figure-025-page-043.png",
+    "caption": "Figure 25 Dolma v1.5 BPB versus loop factor L: 70M and 100M models. Results span TPP 10 to 160 and loop factors L ∈{1, 2, 4, 8, 16, 32}. At these smaller scales, several looping designs remain competitive, while the improvement from increasing L generally diminishes at larger loop factors. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      491.6379699707031
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 26,
+    "page": 44,
+    "file": "public/assets/paper-original/figures/figure-026-page-044.png",
+    "caption": "Figure 26 Dolma v1.5 BPB versus loop factor L: 200M, 300M, and 500M models. Results span TPP 10 to 100 and loop factors L ∈{1, 2, 4, 8}. As model scale and TPP increase, Full-Stack Looping more consistently attains lower BPB, while the marginal improvement from increasing L becomes smaller. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      306.9529724121094
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 27,
+    "page": 44,
+    "file": "public/assets/paper-original/figures/figure-027-page-044.png",
+    "caption": "Figure 27 Dolma v1.5 BPB versus total training FLOPs: 70M and 100M models. Results span TPP 10 to 160 and loop factors L ∈{1, 2, 4, 8, 16, 32}. Middle-Stack Looping often captures much of the quality improvement with a smaller increase in training compute, while increasing the loop factor further eventually gives diminishing returns. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      291.9529724121094,
+      590.0,
+      712.803955078125
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 28,
+    "page": 45,
+    "file": "public/assets/paper-original/figures/figure-028-page-045.png",
+    "caption": "Figure 28 Dolma v1.5 BPB versus total training FLOPs: 200M, 300M, and 500M models. Results span TPP 10 to 100 and loop factors L ∈{1, 2, 4, 8}. Middle-Stack Looping often provides strong gains for a smaller increase in training compute, while Full-Stack Looping can attain lower BPB when more compute is available, particularly at larger model scales. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      531.970947265625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 29,
+    "page": 46,
+    "file": "public/assets/paper-original/figures/figure-029-page-046.png",
+    "caption": "Figure 29 RedPajama BPB versus loop factor L: 70M and 100M models. Results span TPP 10–160 and loop factors L ∈{1, 2, 4, 8, 16, 32}. At these smaller scales, several looping designs remain competitive, while the improvement from increasing L generally diminishes at larger loop factors. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      491.6379699707031
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 30,
+    "page": 47,
+    "file": "public/assets/paper-original/figures/figure-030-page-047.png",
+    "caption": "Figure 30 RedPajama BPB versus loop factor L: 200M, 300M, and 500M models. Results span TPP 10–100 and loop factors L ∈{1, 2, 4, 8}. As model scale and TPP increase, Full-Stack Looping more consistently attains lower BPB, while the marginal improvement from increasing L becomes smaller. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      306.9529724121094
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 31,
+    "page": 47,
+    "file": "public/assets/paper-original/figures/figure-031-page-047.png",
+    "caption": "Figure 31 RedPajama BPB versus total training FLOPs: 70M and 100M models. Results span TPP 10–160 and loop factors L ∈{1, 2, 4, 8, 16, 32}. Middle-Stack Looping often captures much of the quality improvement with a smaller increase in training compute, while increasing the loop factor further eventually gives diminishing returns. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      291.9529724121094,
+      590.0,
+      712.803955078125
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 32,
+    "page": 48,
+    "file": "public/assets/paper-original/figures/figure-032-page-048.png",
+    "caption": "Figure 32 RedPajama BPB versus total training FLOPs: 200M, 300M, and 500M models. Results span TPP 10–100 and loop factors L ∈{1, 2, 4, 8}. Middle-Stack Looping often provides strong gains for a smaller increase in training compute, while Full-Stack Looping can attain lower BPB when more compute is available, particularly at larger model scales. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      531.970947265625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 33,
+    "page": 49,
+    "file": "public/assets/paper-original/figures/figure-033-page-049.png",
+    "caption": "Figure 33 Dolma programming-language BPB versus loop factor L: 70M and 100M models. Results span TPP 10–160 and loop factors L ∈{1, 2, 4, 8, 16, 32}. At these smaller scales, Middle-Stack Looping is often competitive with Full-Stack Looping, while the improvement from increasing L generally diminishes at larger loop factors. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      503.59295654296875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 34,
+    "page": 50,
+    "file": "public/assets/paper-original/figures/figure-034-page-050.png",
+    "caption": "Figure 34 Dolma programming-language BPB versus loop factorL: 200M, 300M, and 500M models. Results span TPP 10–100 and loop factors L ∈{1, 2, 4, 8}. As model scale and TPP increase, Full-Stack Looping becomes more consistently favorable, while the marginal improvement from increasing L becomes smaller. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      304.2139587402344
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 35,
+    "page": 50,
+    "file": "public/assets/paper-original/figures/figure-035-page-050.png",
+    "caption": "Figure 35 Dolma programming-language BPB versus total training FLOPs: 70M and 100M models. Results span TPP 10–160 and loop factors L ∈{1, 2, 4, 8, 16, 32}. Middle-Stack Looping often provides strong quality improvements for a smaller increase in training compute, while spending additional FLOPs through larger loop factors eventually shows diminishing returns. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      289.2139587402344,
+      590.0,
+      715.5439453125
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 36,
+    "page": 51,
+    "file": "public/assets/paper-original/figures/figure-036-page-051.png",
+    "caption": "Figure 36 Dolma programming-language BPB versus total training FLOPs: 200M, 300M, and 500M models. Results span TPP 10–100 and loop factors L ∈{1, 2, 4, 8}. Middle-Stack Looping remains competitive for smaller increases in training compute, while Full-Stack Looping can attain lower BPB when more compute is available, particularly at the larger model scales. Each panel fixes model scale and TPP. Lower BPB is better; red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      531.970947265625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 37,
+    "page": 52,
+    "file": "public/assets/paper-original/figures/figure-037-page-052.png",
+    "caption": "Figure 37 GSM8K BPB versus loop factor L: 70M and 100M models. Results span TPP 10–160 and loop factors L ∈{1, 2, 4, 8, 16, 32}. Several looping designs remain competitive, while the improvement from increasing L generally diminishes at larger loop factors. Each panel fixes model scale and TPP. BPB measures teacher-forced likelihood rather than answer accuracy; lower BPB is better. Red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      501.7139587402344
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 38,
+    "page": 53,
+    "file": "public/assets/paper-original/figures/figure-038-page-053.png",
+    "caption": "Figure 38 GSM8K BPB versus loop factor L: 200M, 300M, and 500M models. Results span TPP 10–100 and loop factors L ∈{1, 2, 4, 8}. Full-Stack Looping becomes more favorable as model scale and TPP increase, although the differences across looping designs remain less uniform than on the general pretraining corpora. Each panel fixes model scale and TPP. BPB measures teacher-forced likelihood rather than answer accuracy; lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      520.240966796875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 39,
+    "page": 54,
+    "file": "public/assets/paper-original/figures/figure-039-page-054.png",
+    "caption": "Figure 39 MATH BPB versus loop factor L: 70M and 100M models. Results span TPP 10–160 and loop factors L ∈{1, 2, 4, 8, 16, 32}. Several looping designs remain competitive at smaller training budgets, while the improvement from increasing L generally diminishes at larger loop factors. Each panel fixes model scale and TPP. BPB measures teacher-forced likelihood rather than answer accuracy; lower BPB is better. Red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      500.71795654296875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 40,
+    "page": 55,
+    "file": "public/assets/paper-original/figures/figure-040-page-055.png",
+    "caption": "Figure 40 MATH BPB versus loop factor L: 200M, 300M, and 500M models. Results span TPP 10–100 and loop factors L ∈{1, 2, 4, 8}. Full-Stack Looping becomes more consistently favorable as model scale and TPP increase. Each panel fixes model scale and TPP. BPB measures teacher-forced likelihood rather than answer accuracy; lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      514.7431640625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 41,
+    "page": 56,
+    "file": "public/assets/paper-original/figures/figure-041-page-056.png",
+    "caption": "Figure 41 HumanEval BPB versus loop factor L: 70M and 100M models. Results span TPP 10–160 and loop factors L ∈{1, 2, 4, 8, 16, 32}. The preferred design varies across training budgets, and increasing L does not always improve BPB. Each panel fixes model scale and TPP. BPB measures teacher-forced likelihood rather than execution accuracy; lower BPB is better. Red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      487.82196044921875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 42,
+    "page": 57,
+    "file": "public/assets/paper-original/figures/figure-042-page-057.png",
+    "caption": "Figure 42 HumanEval BPB versus loop factor L: 200M, 300M, and 500M models. Results span TPP 10–100 and loop factors L ∈{1, 2, 4, 8}. Full-Stack Looping becomes more favorable at larger model scales and higher TPP, although it does not dominate every setting. Each panel fixes model scale and TPP. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      514.761962890625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 43,
+    "page": 58,
+    "file": "public/assets/paper-original/figures/figure-043-page-058.png",
+    "caption": "Figure 43 MBPP BPB versus loop factor L: 70M and 100M models. Results span TPP 10–160 and loop factors L ∈{1, 2, 4, 8, 16, 32}. Several looping designs remain competitive, while the improvement from increasing L generally diminishes at larger loop factors. Each panel fixes model scale and TPP. BPB measures teacher-forced likelihood rather than execution accuracy; lower BPB is better. Red stars denote unstable runs as described in subsection E.1.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      489.75897216796875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 44,
+    "page": 59,
+    "file": "public/assets/paper-original/figures/figure-044-page-059.png",
+    "caption": "Figure 44 MBPP BPB versus loop factor L: 200M, 300M, and 500M models. Results span TPP 10–100 and loop factors L ∈{1, 2, 4, 8}. Full-Stack Looping becomes more favorable as model scale and TPP increase, although the preferred design remains more task-dependent than on the general pretraining corpora. Each panel fixes model scale and TPP. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      520.240966796875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 45,
+    "page": 60,
+    "file": "public/assets/paper-original/figures/figure-045-page-060.png",
+    "caption": "Figure 45 DCLM BPB versus loop factor L at 1B. Full-stack, middle-stack, and Per-Layer Looping are evaluated at TPP 10 and 40 over L ∈{1, 2, 4}. All three improve over the non-looped L = 1 model, with Full-Stack Looping attaining the lowest BPB at matched loop counts. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      459.6099853515625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 46,
+    "page": 60,
+    "file": "public/assets/paper-original/figures/figure-046-page-060.png",
+    "caption": "Figure 46 DCLM BPB versus training FLOPs at 1B. The same models are compared at TPP 10 and 40. Middle-Stack Looping improves BPB with a smaller increase in FLOPs, while full-stack looping reaches lower BPB with more compute. The horizontal axis is logarithmic; marker shape denotes L. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      444.6099853515625,
+      590.0,
+      638.7539672851562
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 47,
+    "page": 61,
+    "file": "public/assets/paper-original/figures/figure-047-page-061.png",
+    "caption": "Figure 47 C4 BPB versus loop factor L at 1B. Non-looped, full-stack, middle-stack, and per-layer models are compared at TPP 10 and 40 over L ∈{1, 2, 4}. Each panel fixes TPP; lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      218.10595703125
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 48,
+    "page": 61,
+    "file": "public/assets/paper-original/figures/figure-048-page-061.png",
+    "caption": "Figure 48 C4 BPB versus training FLOPs at 1B. The same checkpoints are plotted against total training FLOPs at TPP 10 and 40. The horizontal axis is logarithmic; marker shape denotes L. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      203.10595703125,
+      590.0,
+      380.31396484375
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 49,
+    "page": 61,
+    "file": "public/assets/paper-original/figures/figure-049-page-061.png",
+    "caption": "Figure 49 Dolma v1.5 BPB versus loop factor L at 1B. Non-looped, full-stack, middle-stack, and per-layer models are compared at TPP 10 and 40 over L ∈{1, 2, 4}. Each panel fixes TPP; lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      365.31396484375,
+      590.0,
+      605.6289672851562
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 50,
+    "page": 62,
+    "file": "public/assets/paper-original/figures/figure-050-page-062.png",
+    "caption": "Figure 50 Dolma v1.5 BPB versus training FLOPs at 1B. The same checkpoints are plotted against total training FLOPs at TPP 10 and 40. The horizontal axis is logarithmic; marker shape denotes L. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      242.83294677734375
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 51,
+    "page": 62,
+    "file": "public/assets/paper-original/figures/figure-051-page-062.png",
+    "caption": "Figure 51 Dolma programming-languages BPB versus loop factor L at 1B. Non-looped, full-stack, middle-stack, and per-layer models are compared at TPP 10 and 40 over L ∈{1, 2, 4}. Each panel fixes TPP; lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      227.83294677734375,
+      590.0,
+      471.490966796875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 52,
+    "page": 62,
+    "file": "public/assets/paper-original/figures/figure-052-page-062.png",
+    "caption": "Figure 52 Dolma programming-languages BPB versus training FLOPs at 1B. The same checkpoints are plotted against total training FLOPs at TPP 10 and 40. The horizontal axis is logarithmic; marker shape denotes L. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      456.490966796875,
+      590.0,
+      699.6798706054688
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 53,
+    "page": 63,
+    "file": "public/assets/paper-original/figures/figure-053-page-063.png",
+    "caption": "Figure 53 RedPajama BPB versus loop factor L at 1B. Non-looped, full-stack, middle-stack, and per-layer models are compared at TPP 10 and 40 over L ∈{1, 2, 4}. Each panel fixes TPP; lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      315.1409606933594
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 54,
+    "page": 63,
+    "file": "public/assets/paper-original/figures/figure-054-page-063.png",
+    "caption": "Figure 54 RedPajama BPB versus training FLOPs at 1B. The same checkpoints are plotted against total training FLOPs at TPP 10 and 40. The horizontal axis is logarithmic; marker shape denotes L. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      300.1409606933594,
+      590.0,
+      647.573974609375
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 55,
+    "page": 64,
+    "file": "public/assets/paper-original/figures/figure-055-page-064.png",
+    "caption": "Figure 55 WikiText-103 BPB versus loop factor L at 1B. Non-looped, full-stack, middle-stack, and per-layer models are compared at TPP 10 and 40 over L ∈{1, 2, 4}. Each panel fixes TPP; lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      293.59197998046875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 56,
+    "page": 64,
+    "file": "public/assets/paper-original/figures/figure-056-page-064.png",
+    "caption": "Figure 56 WikiText-103 BPB versus training FLOPs at 1B. The same checkpoints are plotted against total training FLOPs at TPP 10 and 40. The horizontal axis is logarithmic; marker shape denotes L. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      278.59197998046875,
+      590.0,
+      482.44696044921875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 57,
+    "page": 67,
+    "file": "public/assets/paper-original/figures/figure-057-page-067.png",
+    "caption": "Figure 57 Specialization helps more as the number of loops increases, consistently across TPP. DCLM BPB versus loop count for 70M–300M full-stack models at TPP 10, 40, and 100. Specialization provides a small improvement at L = 2 and clearer gains at L = 4 and L = 8. Increasing TPP also generally lowers BPB. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      508.3359680175781
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 58,
+    "page": 68,
+    "file": "public/assets/paper-original/figures/figure-058-page-068.png",
+    "caption": "Figure 58 Specialization improves DCLM BPB with relatively few additional parameters across TPP. Results cover 70M–300M full-stack models at TPP 10, 40, and 100. The horizontal axis reports additional non-embedding parameters relative to the identical-weight model. Higher TPP generally lowers BPB. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      342.6199645996094
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 59,
+    "page": 69,
+    "file": "public/assets/paper-original/figures/figure-059-page-069.png",
+    "caption": "Figure 59 Adding independently parameterized layers can achieve lower BPB but requires substantially more storage. Rows show 100M, 200M, 300M, and 500M models; columns show TPP 10, 40, and 100. The purple diamond is the matched doubled-depth model. The final tick after the broken axis gives its true increase in non-embedding parameters. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      580.4519653320312
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 60,
+    "page": 70,
+    "file": "public/assets/paper-original/figures/figure-060-page-070.png",
+    "caption": "Figure 60 When parameters can be stored, additional physical depth can be a better use of training FLOPs. DCLM BPB versus total training FLOPs for 70M–300M models at TPP 10, 40, and 100. Training FLOPs include repeated loop execution, loop-specific corrections, attention-score computation, and the realized token budget. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      538.31201171875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 61,
+    "page": 71,
+    "file": "public/assets/paper-original/figures/figure-061-page-071.png",
+    "caption": "Figure 61 Specialization generally helps more as the number of loops increases. C4 English BPB versus loop count for 70M–300M full-stack models at TPP 10, 40, and 100. Specialization is generally more useful at L = 4 and L = 8 than at L = 2. Increasing TPP also generally lowers BPB. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      508.3359680175781
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 62,
+    "page": 72,
+    "file": "public/assets/paper-original/figures/figure-062-page-072.png",
+    "caption": "Figure 62 Specialization improves C4 English BPB with relatively few additional parameters. Results cover 70M–300M full-stack models at TPP 10, 40, and 100. The horizontal axis reports additional non-embedding parameters relative to the identical-weight model. Higher TPP generally lowers BPB. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      342.6199645996094
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 63,
+    "page": 73,
+    "file": "public/assets/paper-original/figures/figure-063-page-073.png",
+    "caption": "Figure 63 Adding independently parameterized layers can achieve lower C4 English BPB but requires substantially more storage. Rows show 100M, 200M, 300M, and 500M models; columns show TPP 10, 40, and 100. The purple diamond is the matched doubled-depth Transformer. The final tick after the broken axis gives its true increase in non-embedding parameters. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      580.4519653320312
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 64,
+    "page": 74,
+    "file": "public/assets/paper-original/figures/figure-064-page-074.png",
+    "caption": "Figure 64 Low parameter overhead does not necessarily mean better training-compute efficiency. C4 English BPB versus total training FLOPs for 70M–300M models at TPP 10, 40, and 100. Training FLOPs include repeated loop execution, loop-specific corrections, attention-score computation, and the realized token budget. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      538.31201171875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 65,
+    "page": 75,
+    "file": "public/assets/paper-original/figures/figure-065-page-075.png",
+    "caption": "Figure 65 Specialization generally helps more as the number of loops increases. WikiText-103 BPB versus loop count for 70M–300M full-stack models at TPP 10, 40, and 100. Specialization is generally more useful at L = 4 and L = 8 than at L = 2. Increasing TPP also generally lowers BPB. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      509.0149841308594
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 66,
+    "page": 76,
+    "file": "public/assets/paper-original/figures/figure-066-page-076.png",
+    "caption": "Figure 66 Specialization improves WikiText-103 BPB with relatively few additional parameters. Results cover 70M–300M full-stack models at TPP 10, 40, and 100. The horizontal axis reports additional non-embedding parameters relative to the identical-weight model. Higher TPP generally lowers BPB. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      343.29296875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 67,
+    "page": 77,
+    "file": "public/assets/paper-original/figures/figure-067-page-077.png",
+    "caption": "Figure 67 Adding independently parameterized layers can achieve lower WikiText-103 BPB but requires substantially more storage. Rows show 100M, 200M, 300M, and 500M models; columns show TPP 10, 40, and 100. The purple diamond is the matched doubled-depth Transformer. The final tick after the broken axis gives its true increase in non-embedding parameters. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      581.29296875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 68,
+    "page": 78,
+    "file": "public/assets/paper-original/figures/figure-068-page-078.png",
+    "caption": "Figure 68 Low parameter overhead does not necessarily mean better training-compute efficiency. WikiText-103 BPB versus total training FLOPs for 70M–300M models at TPP 10, 40, and 100. Training FLOPs include repeated loop execution, loop-specific corrections, attention-score computation, and the realized token budget. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      538.31201171875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 69,
+    "page": 79,
+    "file": "public/assets/paper-original/figures/figure-069-page-079.png",
+    "caption": "Figure 69 Specialization generally helps more as the number of loops increases. Dolma v1.5 BPB versus loop count for 70M–300M full-stack models at TPP 10, 40, and 100. Specialization is generally more useful at L = 4 and L = 8 than at L = 2. Increasing TPP also generally lowers BPB. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      509.0009765625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 70,
+    "page": 80,
+    "file": "public/assets/paper-original/figures/figure-070-page-080.png",
+    "caption": "Figure 70 Specialization improves Dolma v1.5 BPB with relatively few additional parameters. Results cover 70M–300M full-stack models at TPP 10, 40, and 100. The horizontal axis reports additional non-embedding parameters relative to the identical-weight model. Higher TPP generally lowers BPB. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      343.27899169921875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 71,
+    "page": 81,
+    "file": "public/assets/paper-original/figures/figure-071-page-081.png",
+    "caption": "Figure 71 Adding independently parameterized layers can achieve lower Dolma v1.5 BPB but requires substantially more storage. Rows show 100M, 200M, 300M, and 500M models; columns show TPP 10, 40, and 100. The purple diamond is the matched doubled-depth Transformer. The final tick after the broken axis gives its true increase in non-embedding parameters. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      580.4519653320312
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 72,
+    "page": 82,
+    "file": "public/assets/paper-original/figures/figure-072-page-082.png",
+    "caption": "Figure 72 Low parameter overhead does not necessarily mean better training-compute efficiency. Dolma v1.5 BPB versus total training FLOPs for 70M–300M models at TPP 10, 40, and 100. Training FLOPs include repeated loop execution, loop-specific corrections, attention-score computation, and the realized token budget. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      538.3059692382812
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 73,
+    "page": 83,
+    "file": "public/assets/paper-original/figures/figure-073-page-083.png",
+    "caption": "Figure 73 Specialization generally helps more as the number of loops increases. RedPajama BPB versus loop count for 70M–300M full-stack models at TPP 10, 40, and 100. Specialization is generally more useful at L = 4 and L = 8 than at L = 2. Increasing TPP also generally lowers BPB. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      497.0599670410156
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 74,
+    "page": 84,
+    "file": "public/assets/paper-original/figures/figure-074-page-084.png",
+    "caption": "Figure 74 Specialization improves RedPajama BPB with relatively few additional parameters. Results cover 70M–300M full-stack models at TPP 10, 40, and 100. The horizontal axis reports additional non-embedding parameters relative to the identical-weight model. Higher TPP generally lowers BPB. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      343.29296875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 75,
+    "page": 85,
+    "file": "public/assets/paper-original/figures/figure-075-page-085.png",
+    "caption": "Figure 75 Adding independently parameterized layers can achieve lower RedPajama BPB but requires substantially more storage. Rows show 100M, 200M, 300M, and 500M models; columns show TPP 10, 40, and 100. The purple diamond is the matched doubled-depth Transformer. The final tick after the broken axis gives its true increase in non-embedding parameters. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      580.4519653320312
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 76,
+    "page": 86,
+    "file": "public/assets/paper-original/figures/figure-076-page-086.png",
+    "caption": "Figure 76 Low parameter overhead does not necessarily mean better training-compute efficiency. RedPajama BPB versus total training FLOPs for 70M–300M models at TPP 10, 40, and 100. Training FLOPs include repeated loop execution, loop-specific corrections, attention-score computation, and the realized token budget. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      538.31201171875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 77,
+    "page": 87,
+    "file": "public/assets/paper-original/figures/figure-077-page-087.png",
+    "caption": "Figure 77 Specialization generally helps more as the number of loops increases. Dolma Programming Languages BPB versus loop count for 70M–300M full-stack models at TPP 10, 40, and 100. Specialization is generally more useful at L = 4 and L = 8 than at L = 2. Increasing TPP also generally lowers BPB. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      509.01495361328125
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 78,
+    "page": 88,
+    "file": "public/assets/paper-original/figures/figure-078-page-088.png",
+    "caption": "Figure 78 Specialization can improve Dolma Programming Languages BPB with relatively few additional parameters. Results cover 70M–300M full-stack models at TPP 10, 40, and 100. The horizontal axis reports additional non-embedding parameters relative to the identical-weight model. Higher TPP generally lowers BPB. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      343.29296875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 79,
+    "page": 89,
+    "file": "public/assets/paper-original/figures/figure-079-page-089.png",
+    "caption": "Figure 79 Adding independently parameterized layers can achieve lower Dolma Programming Languages BPB but requires substantially more storage. Rows show 100M, 200M, 300M, and 500M models; columns show TPP 10, 40, and 100. The purple diamond is the matched doubled-depth Transformer. The final tick after the broken axis gives its true increase in non-embedding parameters. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      580.4519653320312
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 80,
+    "page": 90,
+    "file": "public/assets/paper-original/figures/figure-080-page-090.png",
+    "caption": "Figure 80 Low parameter overhead does not necessarily mean better training-compute efficiency. Dolma Programming Languages BPB versus total training FLOPs for 70M–300M models at TPP 10, 40, and 100. Training FLOPs include repeated loop execution, loop-specific corrections, attention-score computation, and the realized token budget. Lower is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      543.7909545898438
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 81,
+    "page": 92,
+    "file": "public/assets/paper-original/figures/figure-081-page-092.png",
+    "caption": "Figure 81 Model scale and TPP reliably improve GSM8K likelihood, whereas the benefit of specialization depends on the configuration. Teacher-forced GSM8K BPB versus loop count for 70M–300M full-stack models. Rows vary model size and columns show TPP 10, 40, and 100. Specialization often helps at L = 4 or L = 8, but the gain is not uniform. Lower BPB is better; these values do not measure final-answer accuracy.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      665.8159790039062
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 83,
+    "page": 94,
+    "file": "public/assets/paper-original/figures/figure-083-page-094.png",
+    "caption": "Figure 83 At comparable training FLOPs, doubling depth is stronger than adding and specializing more loops on GSM8K. Teacher-forced BPB versus total training FLOPs for 70M–300M models at TPP 10, 40, and 100. Training FLOPs include repeated loop execution, loop-specific corrections, attention-score computation, and the realized token budget. The doubled-depth Transformer is included as a reference. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      652.4840087890625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 84,
+    "page": 96,
+    "file": "public/assets/paper-original/figures/figure-084-page-096.png",
+    "caption": "Figure 84 MATH likelihood improves with model scale, TPP, and, more modestly, loop-specific specialization. Teacher-forced MATH BPB versus loop count for 70M–300M full-stack models. Rows vary model size and columns show TPP 10, 40, and 100. Specialization is most consistently useful at L = 4 and L = 8 beyond the smallest scale. Lower BPB is better; these values do not measure final-answer accuracy.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      665.8159790039062
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 85,
+    "page": 97,
+    "file": "public/assets/paper-original/figures/figure-085-page-097.png",
+    "caption": "Figure 85 Specialization improves MATH BPB with little added storage, while the doubled-depth Transformer remains strongest. Rows show 70M, 100M, 200M, and 300M models; columns show TPP 10, 40, and 100. The horizontal axis reports additional non-embedding parameters relative to the identical-weight model. Insets enlarge the specialization range, and the separated reference point denotes the doubled-depth Transformer. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      653.2179565429688
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 86,
+    "page": 98,
+    "file": "public/assets/paper-original/figures/figure-086-page-098.png",
+    "caption": "Figure 86 Doubling depth provides lower MATH BPB than adding and specializing loops at comparable training FLOPs. Teacher- forced BPB versus total training FLOPs for 70M–300M models at TPP 10, 40, and 100. Training FLOPs include repeated loop execution, loop-specific corrections, attention-score computation, and the realized token budget. The doubled-depth Transformer is included as a reference. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      652.4840087890625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 87,
+    "page": 100,
+    "file": "public/assets/paper-original/figures/figure-087-page-100.png",
+    "caption": "Figure 87 Specialization usually improves HumanEval likelihood, but the best loop count and method depend on model size and TPP. Absolute teacher-forced BPB versus loop count for 70M–300M full-stack models. Rows vary model size and columns show TPP 10, 40, and 100. Lower BPB is better; these values do not measure execution accuracy or pass@k.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      660.3258666992188
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 88,
+    "page": 101,
+    "file": "public/assets/paper-original/figures/figure-088-page-101.png",
+    "caption": "Figure 88 The doubled-depth Transformer achieves lower HumanEval BPB, while specialization improves identical weights with far less storage. Results cover 70M–300M full-stack models at TPP 10, 40, and 100. The horizontal axis reports additional non-embedding parameters relative to the identical-weight model. Insets enlarge the specialization range, and the separated reference point denotes the doubled-depth Transformer. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      653.2179565429688
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 89,
+    "page": 102,
+    "file": "public/assets/paper-original/figures/figure-089-page-102.png",
+    "caption": "Figure 89 At comparable training FLOPs, doubling depth gives lower HumanEval BPB than adding and specializing more loops. HumanEval BPB versus total training FLOPs for 70M–300M full-stack models at TPP 10, 40, and 100. Training FLOPs include repeated loop execution, loop-specific corrections, attention-score computation, and the realized token budget. The doubled-depth Transformer is included as a reference. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      652.4840087890625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 90,
+    "page": 104,
+    "file": "public/assets/paper-original/figures/figure-090-page-104.png",
+    "caption": "Figure 90 Specialization improves MBPP likelihood in most settings, while the best loop count and method remain configuration- dependent. Absolute teacher-forced BPB versus loop count for 70M–300M full-stack models. Rows vary model size and columns show TPP 10, 40, and 100. Lower BPB is better; these values do not measure execution accuracy or pass@k.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      658.641845703125
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 91,
+    "page": 105,
+    "file": "public/assets/paper-original/figures/figure-091-page-105.png",
+    "caption": "Figure 91 The doubled-depth Transformer usually reaches lower MBPP BPB, while specialization is competitive at 70M and requires far less storage. Results cover 70M–300M full-stack models at TPP 10, 40, and 100. The horizontal axis reports additional non-embedding parameters relative to the identical-weight model. Insets enlarge the specialization range, and the separated reference point denotes the doubled-depth Transformer. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      653.2179565429688
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 92,
+    "page": 106,
+    "file": "public/assets/paper-original/figures/figure-092-page-106.png",
+    "caption": "Figure 92 Doubling depth gives lower MBPP BPB than adding and specializing loops at comparable training FLOPs. MBPP BPB versus total training FLOPs for 70M–300M full-stack models at TPP 10, 40, and 100. Training FLOPs include repeated loop execution, loop-specific corrections, attention-score computation, and the realized token budget. The doubled-depth Transformer is included as a reference. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      653.9209594726562
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 93,
+    "page": 107,
+    "file": "public/assets/paper-original/figures/figure-093-page-107.png",
+    "caption": "Figure 93 At L = 2, Full-Stack Looping is strongest and receives the clearest benefit from specialization. Results use 300M models at TPP 40. Each panel shows one evaluation corpus. Within each looping schedule, bars compare Loop Matrix, Loop LoRA, and Loop Softmax; stars mark the lowest BPB. Per-layer specialization is less consistently beneficial. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      473.927978515625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 94,
+    "page": 107,
+    "file": "public/assets/paper-original/figures/figure-094-page-107.png",
+    "caption": "Figure 94 At L = 4, specialization further strengthens full-stack looping but remains less useful for Per-Layer Looping. Results use 300M models at TPP 40. Each panel shows one evaluation corpus. Within each looping schedule, bars compare Loop Matrix, Loop LoRA, and Loop Softmax; stars mark the lowest BPB. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      458.927978515625,
+      590.0,
+      713.615966796875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 95,
+    "page": 108,
+    "file": "public/assets/paper-original/figures/figure-095-page-108.png",
+    "caption": "Figure 95 At L = 8, Full-Stack Looping obtains the largest gains from specialization, while per-layer gains remain inconsistent. Results use 300M models at TPP 40. Each panel shows one evaluation corpus. Within each looping schedule, bars compare Loop Matrix, Loop LoRA, and Loop Softmax; stars mark the lowest BPB. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      289.21795654296875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 96,
+    "page": 110,
+    "file": "public/assets/paper-original/figures/figure-096-page-110.png",
+    "caption": "Figure 96 Loop-specific specialization remains useful at 500M and 1B on DCLM. Full-stack results are shown against loop count for the completed TPP settings. The improvement is generally clearest at the larger loop counts, although the absolute differences are smaller than in the 70M–300M sweep. Blank or disconnected cells are unavailable and are not imputed. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      577.9619750976562
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 97,
+    "page": 111,
+    "file": "public/assets/paper-original/figures/figure-097-page-111.png",
+    "caption": "Figure 97 The larger-scale specialization gains require relatively few additional stored parameters on DCLM. BPB is plotted against additional non-embedding parameters relative to the identical-weight full-stack model. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      429.01995849609375
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 98,
+    "page": 111,
+    "file": "public/assets/paper-original/figures/figure-098-page-111.png",
+    "caption": "Figure 98 Specialization continues to improve Full-Stack Looping after accounting for its additional training cost on DCLM. Training FLOPs include repeated execution, loop-specific corrections, attention-score computation, and realized training tokens. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      414.01995849609375,
+      590.0,
+      703.6549682617188
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 99,
+    "page": 112,
+    "file": "public/assets/paper-original/figures/figure-099-page-112.png",
+    "caption": "Figure 99 Loop-specific specialization remains useful at 500M and 1B on C4 English. Full-stack results are shown against loop count for the completed TPP settings. The improvement is generally clearest at the larger loop counts, although the absolute differences are smaller than in the 70M–300M sweep. Blank or disconnected cells are unavailable and are not imputed. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      451.11297607421875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 100,
+    "page": 113,
+    "file": "public/assets/paper-original/figures/figure-100-page-113.png",
+    "caption": "Figure 100 The larger-scale specialization gains require relatively few additional stored parameters on C4 English. BPB is plotted against additional non-embedding parameters relative to the identical-weight full-stack model. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      409.5359802246094
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 101,
+    "page": 113,
+    "file": "public/assets/paper-original/figures/figure-101-page-113.png",
+    "caption": "Figure 101 Specialization continues to improve Full-Stack Looping after accounting for its additional training cost on C4 English. Training FLOPs include repeated execution, loop-specific corrections, attention-score computation, and realized training tokens. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      394.5359802246094,
+      590.0,
+      688.1499633789062
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 102,
+    "page": 114,
+    "file": "public/assets/paper-original/figures/figure-102-page-114.png",
+    "caption": "Figure 102 Loop-specific specialization remains useful at 500M and 1B on WikiText-103. Full-stack results are shown against loop count for the completed TPP settings. The improvement is generally clearest at the larger loop counts, although the absolute differences are smaller than in the 70M–300M sweep. Blank or disconnected cells are unavailable and are not imputed. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      451.11297607421875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 103,
+    "page": 115,
+    "file": "public/assets/paper-original/figures/figure-103-page-115.png",
+    "caption": "Figure 103 The larger-scale specialization gains require relatively few additional stored parameters on WikiText-103. BPB is plotted against additional non-embedding parameters relative to the identical-weight full-stack model. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      409.5359802246094
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 104,
+    "page": 115,
+    "file": "public/assets/paper-original/figures/figure-104-page-115.png",
+    "caption": "Figure 104 Specialization continues to improve Full-Stack Looping after accounting for its additional training cost on WikiText- 103. Training FLOPs include repeated execution, loop-specific corrections, attention-score computation, and realized training tokens. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      394.5359802246094,
+      590.0,
+      688.1499633789062
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 105,
+    "page": 116,
+    "file": "public/assets/paper-original/figures/figure-105-page-116.png",
+    "caption": "Figure 105 Loop-specific specialization remains useful at 500M and 1B on Dolma v1.5. Full-stack results are shown against loop count for the completed TPP settings. The improvement is generally clearest at the larger loop counts, although the absolute differences are smaller than in the 70M–300M sweep. Blank or disconnected cells are unavailable and are not imputed. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      451.094970703125
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 106,
+    "page": 117,
+    "file": "public/assets/paper-original/figures/figure-106-page-117.png",
+    "caption": "Figure 106 The larger-scale specialization gains require relatively few additional stored parameters on Dolma v1.5. BPB is plotted against additional non-embedding parameters relative to the identical-weight full-stack model. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      409.5279846191406
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 107,
+    "page": 117,
+    "file": "public/assets/paper-original/figures/figure-107-page-117.png",
+    "caption": "Figure 107 Specialization continues to improve Full-Stack Looping after accounting for its additional training cost on Dolma v1.5. Training FLOPs include repeated execution, loop-specific corrections, attention-score computation, and realized training tokens. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      394.5279846191406,
+      590.0,
+      688.1449584960938
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 108,
+    "page": 118,
+    "file": "public/assets/paper-original/figures/figure-108-page-118.png",
+    "caption": "Figure 108 Loop-specific specialization remains useful at 500M and 1B on RedPajama. Full-stack results are shown against loop count for the completed TPP settings. The improvement is generally clearest at the larger loop counts, although the absolute differences are smaller than in the 70M–300M sweep. Blank or disconnected cells are unavailable and are not imputed. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      451.11297607421875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 109,
+    "page": 119,
+    "file": "public/assets/paper-original/figures/figure-109-page-119.png",
+    "caption": "Figure 109 The larger-scale specialization gains require relatively few additional stored parameters on RedPajama. BPB is plotted against additional non-embedding parameters relative to the identical-weight full-stack model. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      409.5359802246094
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 110,
+    "page": 119,
+    "file": "public/assets/paper-original/figures/figure-110-page-119.png",
+    "caption": "Figure 110 Specialization continues to improve Full-Stack Looping after accounting for its additional training cost on RedPajama. Training FLOPs include repeated execution, loop-specific corrections, attention-score computation, and realized training tokens. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      394.5359802246094,
+      590.0,
+      688.1499633789062
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 111,
+    "page": 120,
+    "file": "public/assets/paper-original/figures/figure-111-page-120.png",
+    "caption": "Figure 111 Loop-specific specialization remains useful at 500M and 1B on Dolma Programming Languages. Full-stack results are shown against loop count for the completed TPP settings. The improvement is generally clearest at the larger loop counts, although the absolute differences are smaller than in the 70M–300M sweep. Blank or disconnected cells are unavailable and are not imputed. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      451.11297607421875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 112,
+    "page": 121,
+    "file": "public/assets/paper-original/figures/figure-112-page-121.png",
+    "caption": "Figure 112 The larger-scale specialization gains require relatively few additional stored parameters on Dolma Programming Languages. BPB is plotted against additional non-embedding parameters relative to the identical-weight full-stack model. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      409.5359802246094
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 113,
+    "page": 121,
+    "file": "public/assets/paper-original/figures/figure-113-page-121.png",
+    "caption": "Figure 113 Specialization continues to improve Full-Stack Looping after accounting for its additional training cost on Dolma Programming Languages. Training FLOPs include repeated execution, loop-specific corrections, attention-score compu- tation, and realized training tokens. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      394.5359802246094,
+      590.0,
+      688.1499633789062
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 114,
+    "page": 124,
+    "file": "public/assets/paper-original/figures/figure-114-page-124.png",
+    "caption": "Figure 114 The shifted re-injection interface is the main source of PLT’s quality loss at 200M. DCLM BPB at TPP 40 (top) and TPP 80 (bottom) for L ∈{2, 4, 8}. The left panels isolate the unnormalized PLT designs. The unshifted control closely tracks sequential Full-Stack Looping, whereas raw Shifted CLP can fail to match even Vanilla. The right panels show that separately normalizing and then controlling the mixture of the two inputs provides the largest recovery. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      440.4239807128906
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 116,
+    "page": 127,
+    "file": "public/assets/paper-original/figures/figure-116-page-127.png",
+    "caption": "Figure 116 The scale difference changes with training budget and loop depth. Hidden-state RMS divided by token-embedding RMS for final 100M, L = 8 checkpoints evaluated on the same DCLM sample. Each point is the ratio of the mean hidden-state RMS across tokens to the mean embedding RMS across tokens. The figure compares Full-Stack Looping, raw shifted PLT, and normalized shifted PLT. The raw shifted model uses neither normalization nor a gate before combining its inputs. The normalized reference uses the rank-8 linear gate defined in subsection G.3. The y-axis uses logarithmic spacing, but the tick labels show the underlying RMS ratios, not their logarithms.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      420.3309631347656
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 117,
+    "page": 128,
+    "file": "public/assets/paper-original/figures/figure-117-page-128.png",
+    "caption": "Figure 117 KV sharing and G-SWA do not remove the scale difference. Hidden-state RMS divided by token-embedding RMS at TPP 40 and L = 8 for final 100M and 200M checkpoints evaluated on the same DCLM token batch. The y-axis uses logarithmic spacing, but the tick labels show the underlying RMS ratios, not their logarithms. Original PLT is the unnormalized design with KV sharing and G-SWA. For the normalized model, the plotted quantity is the hidden state produced by the Transformer. Normalization is applied only when this state is combined with the embedding at the next loop, so it does not force the plotted ratio to equal one. The normalized reference uses the rank-8 linear gate defined in subsection G.3.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      531.5669555664062
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 118,
+    "page": 130,
+    "file": "public/assets/paper-original/figures/figure-118-page-130.png",
+    "caption": "Figure 118 Gate choice has little effect once the inputs are normalized. DCLM BPB for fixed 50/50, scalar, rank-8 linear, and rank-8 MLP mixing at 100M and 200M. Rows show model size and columns show training budget; each panel compares loop counts. Insets report matched BPB differences from the normalized fixed 50/50 baseline, with negative values favoring the learned gate. The rank-8 linear gate improves over fixed 50/50 in most matched settings, but the differences are small and should be treated as directional because most settings use one training seed. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      399.157958984375
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 119,
+    "page": 131,
+    "file": "public/assets/paper-original/figures/figure-119-page-131.png",
+    "caption": "Figure 119 The gate comparison remains close at larger model sizes. DCLM BPB for the same four mixing rules at 300M and 500M. Rows show model size and columns show training budget; insets report matched differences from the normalized fixed 50/50 baseline. The rank-8 linear gate is again generally favorable, but only by a small margin. Lower BPB and negative inset values are better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      377.2399597167969
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 120,
+    "page": 133,
+    "file": "public/assets/paper-original/figures/figure-120-page-133.png",
+    "caption": "Figure 120 Shifted looping requires the current-token embedding. DCLM BPB across training budgets for the four inputs in Def. 16. The current-token representation without the embedding closely matches the independent Full-Stack implementation, providing a check of the implementation. Adding the embedding improves both the previous-token and current-token variants. When the representation comes from the previous token, removing the embedding produces results worse than Vanilla (No Looping), and several runs diverge. The two conditions with both inputs use separate RMS normalization and the rank-8 linear gate. Missing or diverged results are not filled in. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      416.9689636230469
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 121,
+    "page": 135,
+    "file": "public/assets/paper-original/figures/figure-121-page-135.png",
+    "caption": "Figure 121 Normalized shifted PLT preserves the benefit of looping at 1B across six evaluation datasets. At L = 2, shifted PLT closely matches unshifted PLT and performs better than ordinary Full-Stack Looping, which in turn performs better than Vanilla (No Looping). Shifted PLT retains the parallel decoding schedule, while unshifted PLT and Full-Stack Looping remain sequential. The panels show BPB across TPP 10–160 on DCLM, C4 English, WikiText-103, Dolma v1.5, RedPajama, and Dolma programming languages. The same trained checkpoints are evaluated on every dataset, and each panel uses its own y-axis. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      572.1869506835938
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 122,
+    "page": 136,
+    "file": "public/assets/paper-original/figures/figure-122-page-136.png",
+    "caption": "Figure 122 DCLM quality across loop counts at 100M and 200M. The top row shows 100M and the bottom row shows 200M. Each panel fixes TPP and varies L. The comparison includes Vanilla (No Looping), ordinary Full-Stack Looping, shifted PLT, and unshifted PLT where available. The relative ordering varies more at these smaller model sizes. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      699.2269897460938
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 123,
+    "page": 137,
+    "file": "public/assets/paper-original/figures/figure-123-page-137.png",
+    "caption": "Figure 123 DCLM quality across loop counts at 300M and 500M. The top row shows 300M and the bottom row shows 500M. Each panel fixes TPP and varies L. Shifted PLT is more consistently competitive with ordinary Full-Stack Looping at these larger model sizes, while unshifted PLT provides the stronger sequential reference. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      699.2269897460938
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 124,
+    "page": 138,
+    "file": "public/assets/paper-original/figures/figure-124-page-138.png",
+    "caption": "Figure 124 DCLM quality across training budgets at 100M and 200M. The top row shows 100M and the bottom row shows 200M. Each panel fixes the loop count and varies TPP from 10 to 160 for Full-Stack Looping, shifted PLT, and unshifted PLT. Unshifted PLT achieves the lowest BPB, while shifted PLT usually matches or improves upon Full-Stack Looping. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      585.3529663085938
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 125,
+    "page": 140,
+    "file": "public/assets/paper-original/figures/figure-125-page-140.png",
+    "caption": "Figure 125 DCLM quality across training budgets at 300M and 500M. The top row shows 300M and the bottom row shows 500M. Each panel fixes the loop count and varies TPP from 10 to 160 for Full-Stack Looping, shifted PLT, and unshifted PLT. At L = 2, shifted PLT closely tracks unshifted PLT across the evaluated TPP range; at L = 4, a clearer gap remains. Shifted PLT usually matches or improves upon Full-Stack Looping while retaining its parallel decoding schedule. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      629.782958984375
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 126,
+    "page": 141,
+    "file": "public/assets/paper-original/figures/figure-126-page-141.png",
+    "caption": "Figure 126 Stored parameters and training FLOPs favor different loop counts. DCLM BPB versus stored non-embedding parameters (top) and total training FLOPs (bottom). Columns fix TPP, and marker shape denotes loop count. Looping can improve quality with little additional parameter storage. When training FLOPs are the constraint and additional parameters can be stored, models made deeper with distinct Transformer layers generally give the stronger quality–compute trade-off. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      633.470947265625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 127,
+    "page": 142,
+    "file": "public/assets/paper-original/figures/figure-127-page-142.png",
+    "caption": "Figure 127 Measured quality versus training FLOPs for shifted PLT at larger model sizes. DCLM BPB for Vanilla (No Looping) and shifted PLT at 300M, 500M, and 1B. Panels fix L = 2 or L = 4, and points along each curve increase from TPP 10 to 160. With L = 2, the curves cross at some measured operating points: shifted PLT trained on fewer tokens can outperform Vanilla trained on more tokens. With L = 4, the additional loop computation generally gives a weaker quality–compute trade-off. We do not extrapolate beyond the measured points. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      426.2359619140625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 128,
+    "page": 142,
+    "file": "public/assets/paper-original/figures/figure-128-page-142.png",
+    "caption": "Figure 128 gives the corresponding comparison for unshifted PLT. It achieves stronger quality than shifted PLT, but its loops must run one after another during decoding. It therefore provides a useful quality reference, but not PLT’s inference-efficiency benefit.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      156.7144775390625,
+      590.0,
+      475.6268310546875
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 128,
+    "page": 142,
+    "file": "public/assets/paper-original/figures/figure-128-page-142.png",
+    "caption": "Figure 128 Unshifted PLT provides a stronger quality reference but not parallel decoding. DCLM BPB versus total training FLOPs for Vanilla (No Looping) and unshifted PLT at 300M, 500M, and 1B. Unshifted PLT passes each token’s representation directly from one loop to the next, so its loops remain sequential during decoding. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      460.6268310546875,
+      590.0,
+      707.3692016601562
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 129,
+    "page": 143,
+    "file": "public/assets/paper-original/figures/figure-129-page-143.png",
+    "caption": "Figure 129 DCLM quality versus total training FLOPs at 100M and 200M. The left plot shows 100M and the right plot shows 200M. Insets report BPB differences from the corresponding Full-Stack model. Lower BPB and negative inset values are better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      250.65997314453125
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 130,
+    "page": 143,
+    "file": "public/assets/paper-original/figures/figure-130-page-143.png",
+    "caption": "Figure 130 DCLM quality versus total training FLOPs at 300M and 500M. The left plot shows 300M and the right plot shows 500M. Insets report BPB differences from the corresponding Full-Stack model. Lower BPB and negative inset values are better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      235.65997314453125,
+      590.0,
+      426.56396484375
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 131,
+    "page": 144,
+    "file": "public/assets/paper-original/figures/figure-131-page-144.png",
+    "caption": "Figure 131 DCLM quality versus total training FLOPs at 1B. The L = 2 and L = 4 panels show all five measured training budgets. Insets report BPB differences from the corresponding Full-Stack model. Lower BPB and negative inset values are better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      488.31097412109375
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 132,
+    "page": 145,
+    "file": "public/assets/paper-original/figures/figure-132-page-145.png",
+    "caption": "Figure 132 compares 300M and 500M models at TPP 10–80 and L ∈{2, 4}. The shared-weight results are included for context, while the Loop Matrix results show what happens when the loops are allowed to specialize. The ordering is consistent with the preceding PLT experiments. Unshifted PLT achieves the lowest BPB, but remains sequential during decoding. Shifted PLT is generally stronger than ordinary Full-Stack looping while retaining PLT’s parallel decoding schedule. Adding Loop Matrix does not change this overall ordering.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      344.1848449707031
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 132,
+    "page": 146,
+    "file": "public/assets/paper-original/figures/figure-132-page-146.png",
+    "caption": "Figure 132 Loop-specific specialization preserves the ordering among ordinary and parallel looping designs. DCLM BPB for 300M and 500M models. The figure compares ordinary Full-Stack Looping, shifted PLT, and unshifted PLT with shared weights and with Loop Matrix. Unshifted PLT gives the strongest quality but remains sequential during decoding. Shifted PLT generally improves over Full-Stack Looping while retaining parallel decoding. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      385.17095947265625
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 133,
+    "page": 147,
+    "file": "public/assets/paper-original/figures/figure-133-page-147.png",
+    "caption": "Figure 133 Parallel looping with Loop Matrix on C4 English. Absolute BPB for ordinary Full-Stack Looping, shifted PLT, and unshifted PLT with shared weights and with Loop Matrix. The comparison uses 300M and 500M models, TPP 10–80, and L ∈{2, 4}. The ordering broadly matches DCLM: unshifted PLT is strongest, while shifted PLT generally improves over Full-Stack Looping and retains parallel decoding. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      541.77099609375
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 134,
+    "page": 148,
+    "file": "public/assets/paper-original/figures/figure-134-page-148.png",
+    "caption": "Figure 134 Parallel looping with Loop Matrix on WikiText-103 and Dolma v1.5. The top figure shows WikiText-103 and the bottom figure shows Dolma v1.5. Both compare ordinary Full-Stack Looping, shifted PLT, and unshifted PLT with shared weights and with Loop Matrix. Specialization is generally more useful at L = 4 than at L = 2. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      663.4879760742188
+    ]
+  },
+  {
+    "kind": "figure",
+    "number": 135,
+    "page": 149,
+    "file": "public/assets/paper-original/figures/figure-135-page-149.png",
+    "caption": "Figure 135 Parallel looping with Loop Matrix on RedPajama and Dolma programming languages. The top figure shows RedPajama and the bottom figure shows the code-heavy Dolma programming-languages split. The benefit of specialization is generally clearer at L = 4; at L = 2, the differences are smaller and less uniform, particularly on the programming-languages split. Lower BPB is better.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      40.0,
+      590.0,
+      663.491943359375
+    ]
+  },
+  {
+    "kind": "table",
+    "number": 1,
+    "page": 26,
+    "file": "public/assets/paper-original/tables/table-001-page-026.png",
+    "caption": "Table 1 Model configurations used in our experiments. Transformer layers give the number of Transformer blocks. Model width is the dimension of the representation passed between layers, and MLP width is the intermediate dimension of the SwiGLU MLP. Q/KV gives the numbers of query heads and key–value heads, respectively. The first parameter column excludes the input embedding and is used to assign the model label and set the training-token budget. The final column includes the input embedding and gives the total number of trainable parameters. Parameter counts are reported in millions. All models use a vocabulary of 128,256 tokens, a context length of 8,192, and an attention-head dimension of 128.",
+    "source_pdf": "arXiv:2610.40325v1",
+    "crop": [
+      22.0,
+      132.84490966796875,
+      590.0,
+      240.36361694335938
+    ]
+  }
+]

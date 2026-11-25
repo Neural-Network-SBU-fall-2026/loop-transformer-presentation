@@ -1,6 +1,147 @@
-# Original paper figure assets
+# Original paper figures and tables
 
-Original Figure 2 downloaded from the official arXiv HTML rendering:
-- figure-02-looping-designs.png — Figure 2, looping design space.
+Extracted from the complete PDF of arXiv:2610.40325v1 at 2.4x render scale.
+Each PNG is a page crop containing the original figure and its caption.
 
-The paper contains additional empirical plots and diagrams. Their full-resolution source assets are not yet available through the arXiv endpoints accessible to the automated runner. Do not treat reconstructed SVGs in public/assets/figures/ as original paper figures. Upload the paper PDF/source archive to complete the full extraction.
+Total assets: 136
+Figures: 135
+Tables: 1
+
+| Kind | Number | PDF page | Asset |
+|---|---:|---:|---|
+| figure | 1 | 2 | figure-001-page-002.png |
+| figure | 2 | 5 | figure-002-page-005.png |
+| figure | 3 | 6 | figure-003-page-006.png |
+| figure | 4 | 7 | figure-004-page-007.png |
+| figure | 5 | 7 | figure-005-page-007.png |
+| figure | 6 | 8 | figure-006-page-008.png |
+| figure | 7 | 8 | figure-007-page-008.png |
+| figure | 8 | 9 | figure-008-page-009.png |
+| figure | 9 | 28 | figure-009-page-028.png |
+| figure | 10 | 29 | figure-010-page-029.png |
+| figure | 11 | 30 | figure-011-page-030.png |
+| figure | 12 | 31 | figure-012-page-031.png |
+| figure | 13 | 33 | figure-013-page-033.png |
+| figure | 14 | 34 | figure-014-page-034.png |
+| figure | 15 | 34 | figure-015-page-034.png |
+| figure | 16 | 35 | figure-016-page-035.png |
+| figure | 17 | 37 | figure-017-page-037.png |
+| figure | 18 | 38 | figure-018-page-038.png |
+| figure | 19 | 38 | figure-019-page-038.png |
+| figure | 20 | 39 | figure-020-page-039.png |
+| figure | 21 | 40 | figure-021-page-040.png |
+| figure | 22 | 41 | figure-022-page-041.png |
+| figure | 23 | 41 | figure-023-page-041.png |
+| figure | 24 | 42 | figure-024-page-042.png |
+| figure | 25 | 43 | figure-025-page-043.png |
+| figure | 26 | 44 | figure-026-page-044.png |
+| figure | 27 | 44 | figure-027-page-044.png |
+| figure | 28 | 45 | figure-028-page-045.png |
+| figure | 29 | 46 | figure-029-page-046.png |
+| figure | 30 | 47 | figure-030-page-047.png |
+| figure | 31 | 47 | figure-031-page-047.png |
+| figure | 32 | 48 | figure-032-page-048.png |
+| figure | 33 | 49 | figure-033-page-049.png |
+| figure | 34 | 50 | figure-034-page-050.png |
+| figure | 35 | 50 | figure-035-page-050.png |
+| figure | 36 | 51 | figure-036-page-051.png |
+| figure | 37 | 52 | figure-037-page-052.png |
+| figure | 38 | 53 | figure-038-page-053.png |
+| figure | 39 | 54 | figure-039-page-054.png |
+| figure | 40 | 55 | figure-040-page-055.png |
+| figure | 41 | 56 | figure-041-page-056.png |
+| figure | 42 | 57 | figure-042-page-057.png |
+| figure | 43 | 58 | figure-043-page-058.png |
+| figure | 44 | 59 | figure-044-page-059.png |
+| figure | 45 | 60 | figure-045-page-060.png |
+| figure | 46 | 60 | figure-046-page-060.png |
+| figure | 47 | 61 | figure-047-page-061.png |
+| figure | 48 | 61 | figure-048-page-061.png |
+| figure | 49 | 61 | figure-049-page-061.png |
+| figure | 50 | 62 | figure-050-page-062.png |
+| figure | 51 | 62 | figure-051-page-062.png |
+| figure | 52 | 62 | figure-052-page-062.png |
+| figure | 53 | 63 | figure-053-page-063.png |
+| figure | 54 | 63 | figure-054-page-063.png |
+| figure | 55 | 64 | figure-055-page-064.png |
+| figure | 56 | 64 | figure-056-page-064.png |
+| figure | 57 | 67 | figure-057-page-067.png |
+| figure | 58 | 68 | figure-058-page-068.png |
+| figure | 59 | 69 | figure-059-page-069.png |
+| figure | 60 | 70 | figure-060-page-070.png |
+| figure | 61 | 71 | figure-061-page-071.png |
+| figure | 62 | 72 | figure-062-page-072.png |
+| figure | 63 | 73 | figure-063-page-073.png |
+| figure | 64 | 74 | figure-064-page-074.png |
+| figure | 65 | 75 | figure-065-page-075.png |
+| figure | 66 | 76 | figure-066-page-076.png |
+| figure | 67 | 77 | figure-067-page-077.png |
+| figure | 68 | 78 | figure-068-page-078.png |
+| figure | 69 | 79 | figure-069-page-079.png |
+| figure | 70 | 80 | figure-070-page-080.png |
+| figure | 71 | 81 | figure-071-page-081.png |
+| figure | 72 | 82 | figure-072-page-082.png |
+| figure | 73 | 83 | figure-073-page-083.png |
+| figure | 74 | 84 | figure-074-page-084.png |
+| figure | 75 | 85 | figure-075-page-085.png |
+| figure | 76 | 86 | figure-076-page-086.png |
+| figure | 77 | 87 | figure-077-page-087.png |
+| figure | 78 | 88 | figure-078-page-088.png |
+| figure | 79 | 89 | figure-079-page-089.png |
+| figure | 80 | 90 | figure-080-page-090.png |
+| figure | 81 | 92 | figure-081-page-092.png |
+| figure | 83 | 94 | figure-083-page-094.png |
+| figure | 84 | 96 | figure-084-page-096.png |
+| figure | 85 | 97 | figure-085-page-097.png |
+| figure | 86 | 98 | figure-086-page-098.png |
+| figure | 87 | 100 | figure-087-page-100.png |
+| figure | 88 | 101 | figure-088-page-101.png |
+| figure | 89 | 102 | figure-089-page-102.png |
+| figure | 90 | 104 | figure-090-page-104.png |
+| figure | 91 | 105 | figure-091-page-105.png |
+| figure | 92 | 106 | figure-092-page-106.png |
+| figure | 93 | 107 | figure-093-page-107.png |
+| figure | 94 | 107 | figure-094-page-107.png |
+| figure | 95 | 108 | figure-095-page-108.png |
+| figure | 96 | 110 | figure-096-page-110.png |
+| figure | 97 | 111 | figure-097-page-111.png |
+| figure | 98 | 111 | figure-098-page-111.png |
+| figure | 99 | 112 | figure-099-page-112.png |
+| figure | 100 | 113 | figure-100-page-113.png |
+| figure | 101 | 113 | figure-101-page-113.png |
+| figure | 102 | 114 | figure-102-page-114.png |
+| figure | 103 | 115 | figure-103-page-115.png |
+| figure | 104 | 115 | figure-104-page-115.png |
+| figure | 105 | 116 | figure-105-page-116.png |
+| figure | 106 | 117 | figure-106-page-117.png |
+| figure | 107 | 117 | figure-107-page-117.png |
+| figure | 108 | 118 | figure-108-page-118.png |
+| figure | 109 | 119 | figure-109-page-119.png |
+| figure | 110 | 119 | figure-110-page-119.png |
+| figure | 111 | 120 | figure-111-page-120.png |
+| figure | 112 | 121 | figure-112-page-121.png |
+| figure | 113 | 121 | figure-113-page-121.png |
+| figure | 114 | 124 | figure-114-page-124.png |
+| figure | 116 | 127 | figure-116-page-127.png |
+| figure | 117 | 128 | figure-117-page-128.png |
+| figure | 118 | 130 | figure-118-page-130.png |
+| figure | 119 | 131 | figure-119-page-131.png |
+| figure | 120 | 133 | figure-120-page-133.png |
+| figure | 121 | 135 | figure-121-page-135.png |
+| figure | 122 | 136 | figure-122-page-136.png |
+| figure | 123 | 137 | figure-123-page-137.png |
+| figure | 124 | 138 | figure-124-page-138.png |
+| figure | 125 | 140 | figure-125-page-140.png |
+| figure | 126 | 141 | figure-126-page-141.png |
+| figure | 127 | 142 | figure-127-page-142.png |
+| figure | 128 | 142 | figure-128-page-142.png |
+| figure | 128 | 142 | figure-128-page-142.png |
+| figure | 129 | 143 | figure-129-page-143.png |
+| figure | 130 | 143 | figure-130-page-143.png |
+| figure | 131 | 144 | figure-131-page-144.png |
+| figure | 132 | 145 | figure-132-page-145.png |
+| figure | 132 | 146 | figure-132-page-146.png |
+| figure | 133 | 147 | figure-133-page-147.png |
+| figure | 134 | 148 | figure-134-page-148.png |
+| figure | 135 | 149 | figure-135-page-149.png |
+| table | 1 | 26 | table-001-page-026.png |
