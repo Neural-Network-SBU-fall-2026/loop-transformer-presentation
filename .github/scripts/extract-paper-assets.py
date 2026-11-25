@@ -15,8 +15,9 @@ for page_index, page in enumerate(doc):
     for b in blocks:
         x0, y0, x1, y1, text, *_ = b
         clean = " ".join(text.strip().split())
-        m = re.match(r"^(Figure|Table)\s+(\d+)\b", clean)
-        if not m or (x1 - x0) < page.rect.width * 0.65:
+        m = re.match(r"^(Figure|Table)\s+(\d+)\b(?:\s+([A-Za-z-]+))?", clean)
+        continuation_words = {"gives", "shows", "compares", "presents", "reports", "illustrates", "contains", "provides", "summarizes", "extends"}
+        if not m or (m.group(3) or "").lower() in continuation_words or (x1 - x0) < page.rect.width * 0.65:
             continue
         captions.append({"kind": m.group(1).lower(), "number": int(m.group(2)),
                          "bbox": (x0, y0, x1, y1), "caption": clean})
