@@ -3,8 +3,8 @@
 Extracted from the complete PDF of arXiv:2610.40325v1 at 2.4x render scale.
 Each PNG is a page crop containing the original figure and its caption.
 
-Total assets: 136
-Figures: 135
+Total assets: 134
+Figures: 133
 Tables: 1
 
 | Kind | Number | PDF page | Asset |
@@ -135,11 +135,9 @@ Tables: 1
 | figure | 126 | 141 | figure-126-page-141.png |
 | figure | 127 | 142 | figure-127-page-142.png |
 | figure | 128 | 142 | figure-128-page-142.png |
-| figure | 128 | 142 | figure-128-page-142.png |
 | figure | 129 | 143 | figure-129-page-143.png |
 | figure | 130 | 143 | figure-130-page-143.png |
 | figure | 131 | 144 | figure-131-page-144.png |
-| figure | 132 | 145 | figure-132-page-145.png |
 | figure | 132 | 146 | figure-132-page-146.png |
 | figure | 133 | 147 | figure-133-page-147.png |
 | figure | 134 | 148 | figure-134-page-148.png |

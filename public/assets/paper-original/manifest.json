@@ -1754,25 +1754,11 @@
     "number": 128,
     "page": 142,
     "file": "public/assets/paper-original/figures/figure-128-page-142.png",
-    "caption": "Figure 128 gives the corresponding comparison for unshifted PLT. It achieves stronger quality than shifted PLT, but its loops must run one after another during decoding. It therefore provides a useful quality reference, but not PLT’s inference-efficiency benefit.",
-    "source_pdf": "arXiv:2610.40325v1",
-    "crop": [
-      22.0,
-      156.7144775390625,
-      590.0,
-      475.6268310546875
-    ]
-  },
-  {
-    "kind": "figure",
-    "number": 128,
-    "page": 142,
-    "file": "public/assets/paper-original/figures/figure-128-page-142.png",
     "caption": "Figure 128 Unshifted PLT provides a stronger quality reference but not parallel decoding. DCLM BPB versus total training FLOPs for Vanilla (No Looping) and unshifted PLT at 300M, 500M, and 1B. Unshifted PLT passes each token’s representation directly from one loop to the next, so its loops remain sequential during decoding. Lower BPB is better.",
     "source_pdf": "arXiv:2610.40325v1",
     "crop": [
       22.0,
-      460.6268310546875,
+      411.2359619140625,
       590.0,
       707.3692016601562
     ]
@@ -1817,20 +1803,6 @@
       40.0,
       590.0,
       488.31097412109375
-    ]
-  },
-  {
-    "kind": "figure",
-    "number": 132,
-    "page": 145,
-    "file": "public/assets/paper-original/figures/figure-132-page-145.png",
-    "caption": "Figure 132 compares 300M and 500M models at TPP 10–80 and L ∈{2, 4}. The shared-weight results are included for context, while the Loop Matrix results show what happens when the loops are allowed to specialize. The ordering is consistent with the preceding PLT experiments. Unshifted PLT achieves the lowest BPB, but remains sequential during decoding. Shifted PLT is generally stronger than ordinary Full-Stack looping while retaining PLT’s parallel decoding schedule. Adding Loop Matrix does not change this overall ordering.",
-    "source_pdf": "arXiv:2610.40325v1",
-    "crop": [
-      22.0,
-      40.0,
-      590.0,
-      344.1848449707031
     ]
   },
   {
