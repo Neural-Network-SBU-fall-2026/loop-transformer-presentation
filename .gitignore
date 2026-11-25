@@ -1,0 +1,5 @@
+node_modules
+dist
+exports/*.pptx
+exports/*.pdf
+.DS_Store
