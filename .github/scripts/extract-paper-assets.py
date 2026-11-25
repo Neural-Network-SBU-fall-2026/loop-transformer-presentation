@@ -1,9 +1,11 @@
 from pathlib import Path
-import fitz, json, re, sys
+import fitz, json, re, sys, shutil
 
 pdf = Path(sys.argv[1])
 out = Path("public/assets/paper-original")
 figdir, tabdir = out / "figures", out / "tables"
+if figdir.exists(): shutil.rmtree(figdir)
+if tabdir.exists(): shutil.rmtree(tabdir)
 figdir.mkdir(parents=True, exist_ok=True)
 tabdir.mkdir(parents=True, exist_ok=True)
 doc = fitz.open(pdf)
