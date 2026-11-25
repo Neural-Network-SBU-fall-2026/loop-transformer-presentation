@@ -1,7 +1,7 @@
 import{useEffect,useRef,useState}from"react";import gsap from"gsap";import{ArrowLeft,ArrowRight,Maximize2,Play,Pause,RotateCcw}from"lucide-react";import{slides}from"./slides";
 const base=import.meta.env.BASE_URL;
 const figures:Record<string,{src:string,alt:string,caption:string}>={
-designspace:{src:"01-looping-design-space.svg",alt:"Looping design space: repeated Transformer components and stack-level recurrence schedules",caption:"Method diagram reconstructed from Figure 2; see original paper asset archive."},
+designspace:{src:"../paper-original/figure-02-looping-designs.png",alt:"Original Figure 2 from the paper: looping design space",caption:"Original Figure 2 · Ekbote et al., arXiv:2610.40325v1."},
 adapters:{src:"02-loop-matrix.svg",alt:"Shared base weights with loop-specific low-rank adapters",caption:"Mechanism reconstruction from Figures 4–5."},
 matrix:{src:"02-loop-matrix.svg",alt:"Loop Matrix adapter pool and loop mixing matrix",caption:"Mechanism reconstruction from Figure 4."},
 parallel:{src:"03-plt-dependency-grid.svg",alt:"Token-by-loop dependency graph comparing sequential and shifted recurrence",caption:"Dependency graph reconstructed from Figure 6."},
