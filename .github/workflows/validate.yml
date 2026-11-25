@@ -16,9 +16,12 @@ jobs:
           node-version: 22
       - run: npm install
       - run: npm run build
-      - run: npm run pptx
+      - run: sudo apt-get update && sudo apt-get install -y libreoffice
+      - run: npm run pdf
       - uses: actions/upload-artifact@v4
         with:
-          name: presentation-powerpoint
-          path: exports/How-to-Loop-Your-Transformer.pptx
+          name: presentation-deliverables
+          path: |
+            exports/How-to-Loop-Your-Transformer.pptx
+            exports/How-to-Loop-Your-Transformer.pdf
           if-no-files-found: error
