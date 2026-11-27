@@ -34,7 +34,7 @@ for(let i=0;i<data.length;i++){
  s.addText(bullets.map(x=>"→  "+x).join("\n"),{x:.9,y:2.15,w:5.7,h:2.45,fontFace:"Aptos",fontSize:15,color:"26364A",breakLine:false,paraSpaceAfterPt:13});
  let path="";
  if(asset==="FIG1")path=fig(1);if(asset==="FIG2")path=fig(2);if(asset==="FIG3")path=fig(3);if(asset==="FIG4")path=fig(4);if(asset==="FIG5")path=fig(5);if(asset==="FIG6")path=fig(6);if(asset==="FIG7")path=fig(7);if(asset==="TABLE1")path=table;
- if(path){try{await access(path,constants.R_OK);s.addImage({path,x:6.65,y:1.95,w:5.95,h:4.15,sizingContain:true});}catch{s.addText(claim,{x:6.9,y:2.4,w:5.4,h:2.3,fontSize:17,color:"173D79",bold:true,align:"center",valign:"mid",fit:"shrink"});}}
+ if(path){try{await access(path,constants.R_OK);s.addImage({path,x:6.65,y:1.95,w:5.95,h:4.15});}catch{s.addText(claim,{x:6.9,y:2.4,w:5.4,h:2.3,fontSize:17,color:"173D79",bold:true,align:"center",valign:"mid",fit:"shrink"});}}
  else{s.addShape(pptx.ShapeType.roundRect,{x:6.9,y:2.1,w:5.35,h:2.9,rectRadius:.03,line:{color:"B9C8D4",width:1},fill:{color:"F9FBFC"}});s.addText(claim,{x:7.25,y:2.7,w:4.65,h:1.7,fontFace:"Georgia",fontSize:19,bold:true,color:asset.includes("CONCEPTUAL")?"9B7C17":"173D79",align:"center",valign:"mid",fit:"shrink"});}
  s.addText("HOW TO LOOP YOUR TRANSFORMER",{x:.7,y:7.05,w:6,h:.18,fontFace:"Aptos Mono",fontSize:8,color:"718096",charSpacing:1});
 }
