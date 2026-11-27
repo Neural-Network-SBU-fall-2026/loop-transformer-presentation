@@ -48,10 +48,10 @@ The talk uses the primary paper plus no more than five supporting references. Se
 
 ## Editable placeholders before final export
 
-- Presenter: [Your Name]
-- Instructor: [Professor Name]
+- Presenter: Alireza Kamarzardi
+- Instructor: Saeedreza Khordpishe
 - Course: [Neural Networks]
-- Email: [your university email]
+- Email: a.kamarzardi@mail.sbu.ac.ir
 - Official Shahid Beheshti University logo: pending verified vector asset. The current SBU typographic lockup is temporary and must not be presented as the official seal.
 
 ## Project map
