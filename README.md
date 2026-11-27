@@ -2,6 +2,10 @@
 
 A 19-slide scientific presentation prototype (cover + 17 core slides + Q&A) for a 17–20 minute graduate-level Neural Networks talk.
 
+## Codex handoff
+
+The autonomous production brief and acceptance contract are maintained in [`docs/CODEX_HANDOFF.md`](docs/CODEX_HANDOFF.md). It gives Codex authority over implementation and engineering trade-offs while preserving the agreed scientific, visual, and presentation constraints.
+
 ## Current approved direction
 
 - Scientific Editorial identity inspired by the supplied reference: pale graph-paper canvas, editorial serif headlines, monospace labels, navy/blue/yellow palette.
