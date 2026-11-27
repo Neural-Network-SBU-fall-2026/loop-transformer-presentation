@@ -1,24 +1,15 @@
-# How to Loop Your Transformer
+# How to Loop Your Transformer — Interactive Prototype
 
-A 17-slide English scientific presentation for a 17–19 minute graduate-level talk.
+A 19-slide scientific presentation prototype (cover + 17 core slides + Q&A) for a 17–20 minute graduate-level Neural Networks talk.
 
-## Creative direction
+## Current approved direction
 
-Scientific Editorial, inspired by the supplied reference slides:
-- very light graph-paper canvas and fine grid
-- editorial serif headlines
-- monospace scientific labels
-- navy computation paths, muted blue secondary elements, yellow highlights
-- diagram-first storytelling and progressive reveal
-- no decorative card-heavy layout
-
-The reference is used for visual storytelling only. Scientific claims come from the cited research sources.
-
-## Narrative
-
-The talk now begins with the scaling era and scaling laws, explains the systems cost, surveys efficiency approaches, then reveals the central 100-layer versus 25×4 conceptual example before teaching the paper's actual loop architectures, specialization, parallel inference, KV-cache mechanisms, experiments, and limitations.
-
-The 100 → 25×4 example is explicitly conceptual and is not presented as a paper experiment.
+- Scientific Editorial identity inspired by the supplied reference: pale graph-paper canvas, editorial serif headlines, monospace labels, navy/blue/yellow palette.
+- No original paper figures are embedded in the presentation scenes. Research images remain in the archive only; the final visual system uses custom-designed diagrams and source-backed charts.
+- Step-driven scenes for the efficiency timeline, 100 → 25×4 conceptual transformation, loop design alternatives, Transformer block walkthrough, shifted dependency graph, and normalization/gating.
+- Real WebGL 3D block-stack scene using React Three Fiber / Three.js, with orbit controls.
+- Cover slide and Thank You / Questions slide with editable presenter, instructor, course, and email placeholders.
+- Editable PowerPoint generator now creates 19 slides using custom vector illustrations rather than raw paper figures.
 
 ## Quick start
 
@@ -33,26 +24,46 @@ PDF: `npm run pdf`
 
 ## Controls
 
-Arrow Left/Right: navigate · Space/PageDown: next · PageUp: previous · Home/End: first/last · F: fullscreen · Play: autoplay.
+- Arrow Right / Space / PageDown: next step, then next slide.
+- Arrow Left / PageUp: previous step, then previous slide.
+- Step buttons: jump directly to a stage inside a complex slide.
+- Home / End: cover / Q&A.
+- F: fullscreen.
+- Play: autoplay.
 
-## Sources and scientific integrity
+## Scientific safeguards
 
-Primary paper: Ekbote et al., *How to Loop Your Transformer: Loop Scaling, Specialization, and Parallel Inference*, arXiv:2610.40325v1 (preprint).
+- The 100 → 25×4 visual is explicitly conceptual, not an experiment reported in the paper. Total model parameters are not necessarily quartered because embeddings, heads, and non-looped components may remain.
+- The 10T parameter claim is not stated as a fact without a reliable source.
+- MoE total parameters and active parameters are distinct.
+- BPB is lower-is-better.
+- The 1B experiments reach at most four loops; 32 loops occurs only in smaller model sweeps.
+- Fitted scaling-law frontier estimates are not wall-clock speedups.
+- No empirical plot may contain invented values. Custom charts must be digitized from source tables/figures and cite them in the slide footer or speaker notes.
+- Original paper figures are retained in `public/assets/paper-original/` for research traceability only; do not insert them directly into the final deck.
 
-Scaling-law context:
-- Kaplan et al. (2020), *Scaling Laws for Neural Language Models*.
-- Hoffmann et al. (2022), *Training Compute-Optimal Large Language Models* (Chinchilla).
+## References
 
-Do not assert an unverified 10T deployed model. Separate published parameter counts from outside estimates, and total parameters from active MoE parameters. Empirical plots must use the original paper figures or faithful source-attributed reconstructions. BPB is lower-is-better; fitted scaling-law frontier estimates are not wall-clock speedups.
+The talk uses the primary paper plus no more than five supporting references. See `research/REFERENCES.md`.
+
+## Editable placeholders before final export
+
+- Presenter: [Your Name]
+- Instructor: [Professor Name]
+- Course: [Neural Networks]
+- Email: [your university email]
+- Official Shahid Beheshti University logo: pending verified vector asset. The current SBU typographic lockup is temporary and must not be presented as the official seal.
 
 ## Project map
 
-- `content/STORYLINE.md`: six-act narrative and timing.
-- `content/SLIDE_CONTENT.md`: 17-slide script and speaker notes.
-- `src/slides.ts`: web-deck slide data.
-- `src/App.tsx`: scene renderer and navigation.
-- `src/styles.css`: Scientific Editorial design system and scene animations.
-- `public/assets/paper-original/`: extracted original paper figures and tables.
-- `public/assets/figures/`: authored teaching diagrams, not original paper figures.
-- `scripts/generate-pptx.mjs`: editable PowerPoint generator.
-- `docs/ASSET_PROVENANCE.md`: asset provenance.
+- `docs/PRODUCTION_SPEC.md`: approved production direction and acceptance criteria.
+- `content/STORYLINE.md`: narrative structure.
+- `content/SLIDE_CONTENT.md`: full slide script and speaker notes.
+- `src/slides.ts`: slide content and step metadata.
+- `src/App.tsx`: interactive scene renderer.
+- `src/styles.css`: unified visual system and motion.
+- `public/assets/paper-original/`: source archive only.
+- `public/assets/figures/`: earlier custom teaching diagrams; replace/refine as scenes mature.
+- `scripts/generate-pptx.mjs`: editable vector PowerPoint generator.
+- `research/SCIENTIFIC_CLAIMS.md`: claim/evidence register.
+- `research/REFERENCES.md`: supporting bibliography.
