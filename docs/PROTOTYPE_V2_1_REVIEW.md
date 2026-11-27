@@ -19,6 +19,6 @@ This pass refines architecture-explanation slides so they read as neural-network
 - 3D is used selectively for depth/stack comprehension. Detailed tensor-flow and sublayer diagrams remain 2D where that is more legible and technically precise.
 
 ## Remaining placeholders before production
-- Official SBU logo asset and presenter/instructor/email details.
+- Presenter/instructor/email details are set; official SBU SVG logo is integrated and attributed.
 - Source-digitized empirical chart values for final custom result plots.
 - Final review of all slide transitions and full-screen layout.
