@@ -16,8 +16,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "three": "^0.172.0",
-    "@react-three/fiber": "^8.17.10",
-    "@react-three/drei": "^9.120.4"
+    "@react-three/fiber": "^9.1.2",
+    "@react-three/drei": "^10.0.4"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
