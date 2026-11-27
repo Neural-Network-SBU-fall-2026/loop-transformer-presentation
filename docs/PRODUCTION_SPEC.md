@@ -44,7 +44,7 @@ The approved prototype must demonstrate the final experience, not just a static 
 - Instructor: Saeed Reza Kheradpisheh
 - Course: [Neural Networks]
 - Email: a.kamarzardi@mail.sbu.ac.ir
-- University mark: use an official Shahid Beheshti University logo asset once supplied/verified. Until then, show a typographic SBU placeholder and label it as temporary.
+- University mark: use `public/assets/brand/sbu-logo.svg` on a navy field; preserve its white vector paths and include attribution under CC BY-SA 4.0 in `public/assets/brand/ATTRIBUTION.md`.
 
 ### Prototype acceptance criteria
 - Cover and Q&A slides exist.
