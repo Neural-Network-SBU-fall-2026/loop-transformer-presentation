@@ -3,7 +3,7 @@
 - University: Shahid Beheshti University
 - Course: Neural Networks
 - Presenter: Alireza Kamarzardi
-- Instructor: Saeedreza Khordpishe
+- Instructor: Saeed Reza Kheradpisheh
 - Presenter email: a.kamarzardi@mail.sbu.ac.ir
 - Term: Fall 2026
 - University logo: temporary SBU wordmark until an official logo asset is supplied and verified.
