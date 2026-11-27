@@ -41,7 +41,7 @@ The approved prototype must demonstrate the final experience, not just a static 
 
 ### Required editable placeholders
 - Presenter: Alireza Kamarzardi
-- Instructor: Saeedreza Khordpishe
+- Instructor: Saeed Reza Kheradpisheh
 - Course: [Neural Networks]
 - Email: a.kamarzardi@mail.sbu.ac.ir
 - University mark: use an official Shahid Beheshti University logo asset once supplied/verified. Until then, show a typographic SBU placeholder and label it as temporary.
