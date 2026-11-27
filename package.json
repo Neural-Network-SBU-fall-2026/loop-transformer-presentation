@@ -1,1 +1,31 @@
-{"name":"loop-transformer-presentation","private":true,"version":"1.0.0","type":"module","scripts":{"dev":"vite --host 0.0.0.0","build":"tsc -b && vite build","preview":"vite preview --host 0.0.0.0","pptx":"node scripts/generate-pptx.mjs","pdf":"npm run pptx && libreoffice --headless --convert-to pdf --outdir exports exports/How-to-Loop-Your-Transformer.pptx"},"dependencies":{"gsap":"^3.14.2","lucide-react":"^0.468.0","react":"^19.0.0","react-dom":"^19.0.0"},"devDependencies":{"@types/react":"^19.0.0","@types/react-dom":"^19.0.0","@vitejs/plugin-react":"^4.3.4","pptxgenjs":"^3.12.0","typescript":"~5.7.2","vite":"^6.0.5"}}
+{
+  "name": "loop-transformer-presentation",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "pptx": "node scripts/generate-pptx.mjs",
+    "pdf": "npm run pptx && libreoffice --headless --convert-to pdf --outdir exports exports/How-to-Loop-Your-Transformer.pptx"
+  },
+  "dependencies": {
+    "gsap": "^3.14.2",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.172.0",
+    "@react-three/fiber": "^8.17.10",
+    "@react-three/drei": "^9.120.4"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "pptxgenjs": "^3.12.0",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.5",
+    "@types/three": "^0.172.0"
+  }
+}
