@@ -1,3 +1,15 @@
+# Presentation metadata
+
+- University: Shahid Beheshti University
+- Course: Neural Networks
+- Presenter: Alireza Kamarzardi
+- Instructor: Saeedreza Khordpishe
+- Presenter email: a.kamarzardi@mail.sbu.ac.ir
+- Term: Fall 2026
+- University logo: temporary SBU wordmark until an official logo asset is supplied and verified.
+
+---
+
 # How to Loop Your Transformer — 17-slide final storyboard
 
 **Target duration:** 18–19 minutes · **Language:** English · **Audience:** Graduate Neural Networks  
