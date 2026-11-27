@@ -52,7 +52,7 @@ The talk uses the primary paper plus no more than five supporting references. Se
 - Instructor: Saeed Reza Kheradpisheh
 - Course: [Neural Networks]
 - Email: a.kamarzardi@mail.sbu.ac.ir
-- Official Shahid Beheshti University logo: pending verified vector asset. The current SBU typographic lockup is temporary and must not be presented as the official seal.
+- Official Shahid Beheshti University SVG logo is stored at `public/assets/brand/sbu-logo.svg` with CC BY-SA 4.0 attribution. The official SBU SVG mark is used on a navy background; see `public/assets/brand/ATTRIBUTION.md`.
 
 ## Project map
 
