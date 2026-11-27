@@ -40,10 +40,10 @@ The approved prototype must demonstrate the final experience, not just a static 
 - Do not claim an unverified 10T deployed model. Distinguish published counts from estimates and total from active MoE parameters.
 
 ### Required editable placeholders
-- Presenter: [Your Name]
-- Instructor: [Professor Name]
+- Presenter: Alireza Kamarzardi
+- Instructor: Saeedreza Khordpishe
 - Course: [Neural Networks]
-- Email: [Your University Email]
+- Email: a.kamarzardi@mail.sbu.ac.ir
 - University mark: use an official Shahid Beheshti University logo asset once supplied/verified. Until then, show a typographic SBU placeholder and label it as temporary.
 
 ### Prototype acceptance criteria
